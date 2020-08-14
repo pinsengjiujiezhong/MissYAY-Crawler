@@ -1,0 +1,1 @@
+{"community": "true", "favs": "false", "follow": "false", "user": "true", "college": "false", "node": "false", "mongoes": "false"}

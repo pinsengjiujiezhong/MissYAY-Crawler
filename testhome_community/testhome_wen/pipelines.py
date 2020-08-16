@@ -46,6 +46,9 @@ class TesthomeWenPipeline(object):
             item['release_time'] = int(time.mktime(timeArray))
             timeArray = time.strptime(item['recovery_time'], "%Y-%m-%d %H:%M:%S")
             item['recovery_time'] = item['last_update_time'] = int(time.mktime(timeArray))
+        if item['recovery_time'] and not item['recovery_uid']:
+            item['recovery_uid'] = 'anonymous'
+            item['recovery_username'] = '匿名'
         item['hit'] = re.findall('\d+', item['hits'][-1])[-1]
         if len(item['imgurls']) > 1:
             for url in item['imgurls']:

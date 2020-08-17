@@ -112,7 +112,14 @@ class TesthomeSpider(Spider):
             result['reply_id'] = comment.css('div.reply-to-block::attr(data-reply-to-id)').extract_first()
             for item_comment in item['comments']:
                 if item_comment['comment_id'] == result['reply_id']:
-                    result['reply_comment'] = item_comment
+                    result['reply_comment'] = {
+                        'reply_id': result['comment_id'],
+                        'reply_floor': result['comment_floor'],
+                        'reply_username': result['username'],
+                        'reply_uid': result['uid'],
+                        'reply_portrait': result['user_portrait'],
+                        'reply_content': result['content']
+                    }
                     break
             for img in result['imgurls']:
                 if 'http' not in img:

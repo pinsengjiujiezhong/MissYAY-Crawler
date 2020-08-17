@@ -21,7 +21,7 @@ class TesthomeSpider(Spider):
 
     def mongo_connect(self):
         client = pymongo.MongoClient('127.0.0.1')
-        testerhome = client.testerhome
+        testerhome = client.testerhomes
         follow = testerhome.follow
         college = testerhome.college
         uidList = []
@@ -46,7 +46,7 @@ class TesthomeSpider(Spider):
 
     def mongo_miss(self):
         client = pymongo.MongoClient('127.0.0.1')
-        testerhome = client.testerhome
+        testerhome = client.testerhomes
         user = testerhome.users
         favs = testerhome.favs
         user_items = user.find({})
@@ -61,9 +61,9 @@ class TesthomeSpider(Spider):
             if uid not in userList:
                 self.missList.append(uid)
 
-    def start_requests(self):
-        # self.mongo_connect()
-        # self.mongo_miss()
+    def start_requests(self): 
+        self.mongo_connect()
+        self.mongo_miss()
         print('uidListNum: ', len(self.uidList))
         print('missListNum: ', len(self.missList))
         for uid in self.uidList:

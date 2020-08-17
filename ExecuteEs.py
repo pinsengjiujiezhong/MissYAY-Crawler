@@ -13,9 +13,9 @@ flag = {
     'college': 'id',
     'node': 'id',
 }
-es = Elasticsearch([{'host': '127.0.0.1', 'port': 9200}])
+es = Elasticsearch([{'host': '140.143.15.155', 'port': 9200}])
 client = pymongo.MongoClient('127.0.0.1')
-testerhome = client.testerhome
+testerhome = client.testerhomes
 
 for key in flag.keys():
     print('当前执行的mongo库: %s'%key)

@@ -14,7 +14,7 @@ class TesthomeSpider(Spider):
 
     def start_requests(self):
         client = pymongo.MongoClient('127.0.0.1')
-        testerhome = client.testerhome
+        testerhome = client.testerhomes
         community = testerhome.community
         items = community.find({})
         uidList = []

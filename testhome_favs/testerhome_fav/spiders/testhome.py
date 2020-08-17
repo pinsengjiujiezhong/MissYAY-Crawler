@@ -14,7 +14,7 @@ class TesthomeSpider(Spider):
 
     def mongo_connect(self):
         client = pymongo.MongoClient('127.0.0.1')
-        testerhome = client.testerhome
+        testerhome = client.testerhomes
         follow = testerhome.follow
         uidList = []
         items = follow.find({})
